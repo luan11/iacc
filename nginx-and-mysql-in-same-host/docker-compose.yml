@@ -1,0 +1,28 @@
+version: '3.9'
+
+networks:
+  common:
+    driver: bridge
+
+services:
+  mysqldb:
+    image: mysql
+    container_name: database
+    restart: always
+    networks:
+      - common
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+
+  nginxwebserver:
+    image: nginx:stable
+    container_name: webserver
+    restart: always
+    networks:
+      - common
+    ports:
+      - 80:80
+    depends_on:
+      - mysqldb
