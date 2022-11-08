@@ -15,6 +15,7 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydefaultdatabase
 
   nginxwebserver:
     image: nginx:stable
@@ -24,5 +25,3 @@ services:
       - common
     ports:
       - 80:80
-    depends_on:
-      - mysqldb
