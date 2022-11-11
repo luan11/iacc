@@ -1,0 +1,18 @@
+apiVersion: v1
+
+kind: Service
+
+metadata:
+  name: nginx-service
+  labels:
+    name: nginx-service
+    app: learning-k8s
+
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    name: nginx-pod
+    app: learning-k8s
